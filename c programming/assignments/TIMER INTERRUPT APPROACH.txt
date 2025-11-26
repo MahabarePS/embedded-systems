@@ -1,0 +1,8 @@
+1 Wap to toggle LED connected at P1.0 after every 10ms
+2 Wap to toggle LED connected at P1.0 after every 10ms, 5 times
+3 Wap to generate a symmetrical square wave of 2KHz on P3.1
+4 Wap to toggle LED connected to P1.0 (ONCE) every time when switch connected to           P3.0 is pressed  & continuously  generate a symmetrical square wave of 2KHz on           P3.1 
+5 Wap to generate square wave of1KHz on P1.0 & square wave of 2kHz on P1.1 at the same   time(use timer 0 for 1KHz & timer 1 for 2KHz in mode 1) 
+6 WAP to interface two switches sw1 & sw2 on P1.0 & P1.1 respectively , generate a   square wave of 1KHz on P3.0 when sw1 is pressed and  , generate a square wave of 2KHz   on P3.0 when sw2 is pressed(use timer 0 for 1KHz & timer 1 for 2KHz in mode 1)
+7 Wap to toggle LED connected on P1.0 after every 50 ms & toggle LED connected on P1.1   after every 1sec (use only timer 1 in mode 1 )
+8 Wap to toggle led connected at P1.0 after every 200 microseconds using autoreload mode

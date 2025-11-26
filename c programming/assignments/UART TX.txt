@@ -1,0 +1,11 @@
+1. WAP TO transmitt the following character through UART at 9600 bps
+     char c = 'X';
+
+2. WAP TO convert following int into ASCII's & then send it through UART at 9600 bps
+     int x = 123;
+*** same code should work for int with any number of digits
+
+3. WAP TO convert following float into ASCII's & then send it through UART at 9600 bps
+     float x = 51.23; 
+
+*** same code should work for floats with minimum 1 & maximum 3 digits after decimal point 

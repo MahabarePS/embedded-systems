@@ -1,0 +1,17 @@
+WAP to interface switch1 to INT0 
+       interface switch2 to INT1
+       interface LED1 to P1.0
+   
+       interface switch3 to P2.0
+       interface LED2 to P2.1   
+
+toggle LED1 after every 50ms(use T0),when switch1 is pressed LED1 should toggle after every 100ms, when switch2 is pressed LED1 should toggle after every 1 sec.
+
+whenever switch3 is pressed LED2 should toggle once 
+
+whenever data is received through UART store it in a string(at 9600 bps in mode 1),
+after 10 receptions transmitt the data through UART
+**transmitt one space(' ')after every data 
+
+
+**** only switch3 will be polling, use interrupt approach for other peripherals

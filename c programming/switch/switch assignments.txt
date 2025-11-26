@@ -1,0 +1,5 @@
+1.write a menu driven calculator program (+.addition  -.subtraction /.division  *.multiplication)
+2.write a program to accept a number and print week day accordingly (Monday for 1, Tuesday for 2, Wednesday for 3……..Sunday for 7)
+3.write a program to find whether given number is even or odd
+4.write a program to find whether given character is vowel or consonant
+5.write a program to find whether given character is alphabet or number, if its alphabet find whether its vowel or consonant, if its number find whether its even or odd

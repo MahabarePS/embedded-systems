@@ -1,0 +1,8 @@
+1. WAP to generate PWM freq of 2KHz with 25% duty cycle using any one timer, on P1.0
+2. WAP to generate PWM freq of 1KHz with 25% duty cycle using any one timer, on P1.0
+3. WAP to generate PWM freq of 1KHz with 50% duty cycle using any one timer, on P1.0
+4. WAP to generate PWM freq of 1KHz with 75% duty cycle using any one timer, on P1.0
+5. WAP to generate PWM freq of 1KHz with 25% duty cycle using any one timer in 
+   8bit-AUTORELOAD mode, on P1.0
+6. WAP to generate PWM freq of 1KHz with 25% duty cycle on P1.0 using T0 &
+   PWM freq of 2KHz with 75% duty cycle using T1, on P3.0  

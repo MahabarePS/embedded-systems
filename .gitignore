@@ -53,3 +53,144 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+
+# A .gitignore for Keil projects.
+# Taken mostly from http://www.keil.com/support/man/docs/uv4/uv4_b_filetypes.htm
+
+# User-specific uVision files
+*.opt
+*.uvopt
+*.uvoptx
+*.uvgui
+*.uvgui.*
+*.uvguix.*
+
+# Listing files
+*.cod
+*.htm
+*.i
+*.lst
+*.map
+*.m51
+*.m66
+# define exception below if needed
+*.scr
+
+# Object and HEX files
+*.axf
+*.b[0-3][0-9]
+*.hex
+*.d
+*.crf
+*.elf
+*.hex
+*.h86
+*.lib
+*.obj
+*.o
+*.sbr
+
+# Build files
+# define exception below if needed
+*.bat
+*._ia
+*.__i
+*._ii
+
+# Generated output files
+/Listings/*
+/Objects/*
+
+# Debugger files
+# define exception below if needed
+*.ini
+
+# Other files
+*.build_log.htm
+*.cdb
+*.dep
+*.ic
+*.lin
+*.lnp
+*.orc
+# define exception below if needed
+*.pack
+# define exception below if needed
+*.pdsc
+*.plg
+# define exception below if needed
+*.sct
+*.sfd
+*.sfr
+
+# Miscellaneous
+*.tra
+*.bin
+*.fed
+*.l1p
+*.l2p
+*.iex
+
+# To explicitly override the above, define any exceptions here; e.g.:
+# !my_customized_scatter_file.sct
+
+
+# MPLAB X IDE generated files
+nbproject/private/
+build/
+dist/
+*.o
+*.elf
+*.hex
+*.map
+*.bak
+*.pre
+*.dbg
+*.d
+*.log
+*.lst
+*.sbr
+*.bsc
+*.pcd
+*.mc3
+*.generated_files/
+
+# MPLAB IPE files
+*.ipecmd
+
+# Harmony 3 specific files (if applicable)
+firmware/src/config/*/harmony.prj
+firmware/src/config/*/device_config.h
+firmware/src/config/*/peripheral_config.h
+firmware/src/config/*/system_config.h
+firmware/src/config/*/configuration.h
+firmware/src/config/*/initialization.c
+firmware/src/config/*/interrupts.c
+firmware/src/config/*/sys_tasks.c
+firmware/src/config/*/user.c
+firmware/src/config/*/templates/
+firmware/src/config/*/MCC_generated_files/
+
+# Other common ignored files
+.DS_Store
+Thumbs.db
+*.user
+*.suo
+*.ncb
+*.aps
+*.obj
+*.exe
+*.dll
+*.lib
+*.pdb
+*.ilk
+
+# PIC packages
+/PIC/
+# in PIC skip all except "hw" folder
+!/PIC/hw/
+# setup
+setups/PIC/PICSimLab_0.9.2_w64-dev/
+setups/8051-8052/8052/pololu-cp2102-windows/
+setups/8051-8052/8052/RhydoLabz eCee ATMEL-AT89S52/

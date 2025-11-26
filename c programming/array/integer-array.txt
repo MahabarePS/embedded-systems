@@ -1,0 +1,17 @@
+INTEGER ARRAY ASSIGNMENTS
+
+1.	Write a program to scan and display array
+2.	Write a program to scan and display array in reverse order
+3.	Write a program to display numbers  at odd indexes only
+4.	Write a program to display addition of array elements
+5.	Write a program to display average of all elements
+6.	Write a program to find largest no of array
+7.	Write a program to find smallest no of array
+8.	Write a program to count even and odd numbers in array
+9.	Write a program to count prime numbers in array, display all the prime numbers along with their indexes
+10.	 Write a program to count Armstrong  numbers in array, display all the Armstrong numbers along with their indexes
+11.	Declare two arrays arr1[5] & arr2[5], scan arr2 and copy it into arr1 & display both arrays.
+12.	scan two arrays & store their addition in third array in reverse order
+e.g    for arrays of 5 elements, addition :  arr3[4]= arr1[0]+arr2[0]
+        13. Find the midpoint of array without using / operator (contents at last index/2)
+        14. Write a program to find the third largest number in array

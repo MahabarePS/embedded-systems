@@ -1,0 +1,12 @@
+UART using interrupt approach
+
+1. wap to transmitt HELLO 
+2. wap to receive 5 characters(using interrupt approach) & transmitt it 
+3. wap to tranmitt ASCII values of digits of following number
+   int x = 543;
+4. wap to receive two digits (as two bytes), combine them to form a decimal number 
+   & send it on P1
+   e.g  if first byte received is 0000 1001
+        & second byte received is 0000 0010
+        then 92(decimal)should be sent on P1
+5. wap to receive 5 characters & after complete reception send them on P2 with time gap of 1 sec between every two characters 
