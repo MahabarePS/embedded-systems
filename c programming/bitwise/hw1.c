@@ -5,7 +5,7 @@ hw1: WAP to reset the 4th bit of an character variable
 #include<stdio.h>
 int main(void){
     unsigned char ch = 0xBC;
-    ch = ch & 0xEF;
+    ch &= ~(1 << 4);//0xEF;
     printf("After 4th bit reset of 0xBC: 0x%x",ch);
     return 0;
 }
