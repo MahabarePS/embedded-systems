@@ -3,20 +3,19 @@ hw1: WAP to to addition of 3 numbers
      and display the addition in called function.
 */
 #include<stdio.h>
-//function declare
-int add(int, int);
+int add(int, int, int);          //function declare
 int main(void){
-    int num1=0,num2=0,sum=0;
-    printf("enter two numbers");
-    scanf("%d%d",&num1,&num2);
+    int num1=0,num2=0, num3=0,sum=0;
+    printf("enter three numbers");
+    scanf("%d%d%d",&num1,&num2,&num3);
     //function call with actual arguments
-    sum = add(num1,num2);
-    printf("addition: %d",sum);
+    add(num1,num2,num3);
     return 0;
 }
 //function add with num1 | num2 formal arg
-int add(int num1,int num2){
+int add(int num1,int num2, int num3){
     int z = 0;
-    z = num1+num2;
+    z = num1+num2+num3;
+    printf("addition: %d",z);
     return z;
 }

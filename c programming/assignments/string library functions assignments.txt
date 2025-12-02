@@ -1,0 +1,18 @@
+Use string library functions whereever needed !!
+
+1.Write a program to accept string from user & find its length
+2.Write a program to accept one string from user , & copy it into another empty string
+3.Write a program to accept two strings from user & compare them, display whether they are equal or not,if they are unequal find which character is greater at the point of mismatch
+4.Write a program to accept two strings from user & concatenate them and display concatenated string (e.g. - str1[20]=”hello” str2[10]=”welcome”…………after concatenation  str1 should become hellowelcome)
+(use pointers)
+5.Write a program to accept two strings from user & insert the second string into first after the character specified by user   (e.g.- str1[20]=”hello” str2[10]=”welcome”….if user specifies  e  str1 should become hewelcomello) (use pointers)
+6.Write a program to calculate & display the length of each string in 2d character array arr[3][20]
+7.Write a program to scan 2d character array & a 1d character array from user, find whether 1d array is part of 2d character array or not,if yes display the count of occurance of 1d in 2d (use pointers)
+8.Write a program to concatenate all strings of 2d array (arr[3][20]) in a single 1d array & display it (use pointers)
+9.Write a program to accept a string from user & count number of words (use pointers)
+10.Write a program to arrange strings of 2d character array in alphabetic order (without using other array) (use pointers)
+11.Write a program to accept a string from user & swap adjacent words (use pointers)
+(one extra string is allowed)
+example :
+input : hello how are you
+output : how hello you are
