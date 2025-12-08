@@ -12,6 +12,6 @@ union xyz{
     struct abc w;
 }t;
 int main(void){
-    printf("\nsize: %u",sizeof(t));
+    printf("size: %u",sizeof(t));
     return 0;
 }
