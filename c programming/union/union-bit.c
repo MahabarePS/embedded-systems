@@ -2,6 +2,7 @@
 PS: Bits operation
 */
 #include<stdio.h>
+#include<stdint.h>
 struct bitwise{
     uint8_t b0:1;
     uint8_t b1:1;
@@ -16,3 +17,7 @@ union U{
     unsigned char c;
     struct bitwise bits;
 }t;
+int main(void){
+    printf("size: %u",sizeof(t));
+    return 0;
+}
