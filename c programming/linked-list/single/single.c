@@ -38,16 +38,24 @@ PS: Create a single linked list
     scanf("%d",&newnode->id);
     printf("\nEnter name: ");
     scanf("%s",newnode->name);
-    //making the next pointer null
+    // making the next pointer null
     newnode->next = NULL;
-
+    // if empty node
     if(head==NULL){
+        // create a new one
         head = newnode;
-    }else{
+    }else{  // there are some nodes and lst node address will be in the head
         struct single *temp = head;
+        // till its last node
         while(temp->next!=NULL){
+            // move to the next node 
             temp = temp->next;
         }
+        // then append a new node
         temp->next = newnode;
     }
+ }
+
+ void display_all_nodes(void){
+    
  }
