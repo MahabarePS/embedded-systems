@@ -1,0 +1,28 @@
+#include<stdio.h>
+#define ARRAY_SIZE 5
+int main(void)
+{
+   int arr[ARRAY_SIZE]={2,5,7,13,19},n=0;
+   int min=0,max= ARRAY_SIZE-1,mid=(min+max)/2;
+
+   printf("\nenter number to be searched :  ");
+   scanf("%d",&n);
+
+   while(min<=max)
+   {
+      if(arr[mid]==n)
+        break;
+      else if(n < arr[mid])
+        max = mid-1;
+      else
+        min = mid+1;
+
+      mid=(min+max)/2;
+   }
+
+   if(min>max)
+      printf("\n%d is not present in the array\n",n);
+   else
+      printf("\n%d found at index : %d \n",n,mid);
+   return 0;
+}
