@@ -8,7 +8,7 @@ int main(void){
     display(num);
     return 0;
 }
-// printing 1 to 100 recursively
+// printing 100 to 1 recursively
 int display(int x){
     if(x>=1){
         printf("%d\t",x);
