@@ -21,9 +21,9 @@ int main(){
     cout<< "Pi" << SQR(3+2) << endl;
 
     //Implicit type casting
-    int x = 10;
+    int x1 = 10;
     double y = 3;
-    cout << "Division: " << x/y << endl;
+    cout << "Division: " << x1/y << endl;
     //Explicit type casting
     int x = 10;
     double z = (int)y;
