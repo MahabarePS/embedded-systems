@@ -31,9 +31,11 @@ bool armstrong(int x){
     while(full_int>0){
         int curr =  full_int%10;
         int d = 1;
+        //get the exponent of the curr
         for(int i=1;i<=no_of_digits;i++){
             d = d * curr;
         }
+        //accumulate the exponents
         sum = sum + d;
         full_int = full_int/10;
     }
