@@ -11,10 +11,13 @@
 *.ilk
 *.map
 *.exp
+*.lnk
 
 # Precompiled Headers
 *.gch
 *.pch
+*.xml
+*.properties
 
 # Libraries
 *.lib
@@ -35,6 +38,10 @@
 *.i*86
 *.x86_64
 *.hex
+*~
+*.swp
+a.out
+.deps/
 
 # Debug files
 *.dSYM/
@@ -123,6 +130,7 @@ dkms.conf
 *.sct
 *.sfd
 *.sfr
+*.dat
 
 # Miscellaneous
 *.tra
@@ -185,11 +193,22 @@ Thumbs.db
 *.lib
 *.pdb
 *.ilk
+*.properties
+*.mk
+*.xml
+!build.xml
+Makefile
 
-# PIC packages
-/PIC/
-# in PIC skip all except "hw" folder
-!/PIC/hw/
+# PIC packages to ignore
+/PIC/docs
+/PIC/gnuBins
+/PIC/mplab_platform
+/PIC/packs
+/PIC/Switcher
+/PIC/sys
+/PIC/ThirdParty
+/PIC/build
+/PIC/nbproject/*
 # setup
 setups/PIC/PICSimLab_0.9.2_w64-dev/
 setups/8051-8052/8052/pololu-cp2102-windows/
