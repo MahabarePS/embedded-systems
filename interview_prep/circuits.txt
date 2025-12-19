@@ -1,0 +1,49 @@
+
+
+1.
+
+Voltage Divider	Converts one voltage range to another.	
+use : Reading analog sensors.
+
+2.
+
+Op-Amp Buffer (Voltage Follower)Provides high input impedance and low output impedance.	
+use : Sensor isolation.
+
+3.
+Current-to-Voltage Converter (Transimpedance Amplifier)	Converts sensor current output (e.g. photodiode) into voltage.	Light sensors, 4–20 mA sensors.
+
+4.
+Voltage-to-Current Converter	Drives current-based actuators or sensors.	4–20 mA transmitters.
+
+5.
+RC Low-pass / High-pass / Band-pass Filters	Filters out unwanted frequencies or noise.	
+use : ADC input filtering.
+
+6.
+Instrumentation Amplifier	Amplifies small differential signals.	
+use : Bridge sensors (strain gauge, pressure sensor).
+
+
+7.Comparator / Schmitt Trigger	Converts analog signal to clean digital logic.	
+use : Edge detection, zero-crossing detection.
+
+
+8. H BRIDGE
+use : driving motor
+
+9. POWER SUPPLY : transformer->rectifier->filter->Regulator
+
+10. read about what is
+                         relay
+                         flyback diode
+                         optocoupler
+                         buffer
+                         Latch
+                         MUX
+                         DEMUX
+                         SHIFT REGISTER
+
+11. inverting & non inverting amplifiers, unity gain amplifiers with gain calculations
+      
+             
