@@ -108,6 +108,7 @@ double Student::update_marks(double newPIC, double newM8051, double newCoding){
     return tot_marks;
 }
 void Student::indi_records(){
+    calculate_grade();
     cout<<"------- Student "<<total_no_students<<" -------"<<endl;
     cout<<"Roll No      : "<<roll_no<<endl;
     cout<<"Name         : "<<name<<endl;
@@ -122,15 +123,12 @@ string Student::std_name_high_marks=" ";
 int main(void){
     Student s1("Prasad","SepOffline",78.5,82.0,90.0); //250.5
     s1.total_marks();
-    s1.calculate_grade();
     s1.indi_records();
     Student s2("Jeff","SepOffline",72.5,52.0,60.0); //184.5
     s2.total_marks();
-    s2.calculate_grade();
     s2.indi_records();
     Student s3("Majed","SepOffline",54.5,82.0,40.0); //176.5
     s3.total_marks();
-    s3.calculate_grade();
     s3.indi_records();
     // Student s4("Geethika","SepOffline",89.5,91.0,94.0); //274.5
     // s4.total_marks();
