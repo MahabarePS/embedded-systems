@@ -56,7 +56,7 @@ class Student{
         //member functions
         double total_marks();
         char calculate_grade();
-        // double update_marks();
+        double update_marks(double,double,double);
         void indi_records();
         static void high_score_display(){
             cout<<"\n-------Student Record-------"<<endl;
@@ -88,14 +88,31 @@ char Student::calculate_grade(){
         return grade = 'C';
     }
 }
-// double Student::update_marks(){
+double Student::update_marks(double newPIC, double newM8051, double newCoding){
+    PIC = newPIC;
+    m8051 = newM8051;
+    coding = newCoding;
 
-// }
+    // Recalculate total marks
+    tot_marks = PIC + m8051 + coding;
+
+    // Update highest scorer if needed
+    if (tot_marks > highest_total_marks) {
+        highest_total_marks = tot_marks;
+        std_name_high_marks = name;
+    }
+
+    // Recalculate grade
+    calculate_grade();
+
+    return tot_marks;
+}
 void Student::indi_records(){
     cout<<"------- Student "<<total_no_students<<" -------"<<endl;
     cout<<"Roll No      : "<<roll_no<<endl;
     cout<<"Name         : "<<name<<endl;
-    cout<<"total Marks  : "<<tot_marks<<endl;
+    cout<<"Total Marks  : "<<tot_marks<<endl;
+    cout<<"Grade        : "<<grade<<endl;
 }
 //initializing static variables
 int Student::total_no_students=0;
@@ -118,7 +135,8 @@ int main(void){
     // Student s4("Geethika","SepOffline",89.5,91.0,94.0); //274.5
     // s4.total_marks();
     // s4.calculate_grade();
-
-    s1.high_score_display();
+    // s2.update_marks(80.0,77.0,75.0);
+    // s2.indi_records();
+    Student::high_score_display();
     return 0;
 }
