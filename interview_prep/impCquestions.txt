@@ -1,0 +1,35 @@
+what is typecasting ? give example of typecasting done explicitly
+give examples of unary, binary & ternary operators
+how to create user defined header file ? give one code example
+what is the difference between while & do-while ?
+is it possible to create infinite loop using for loop ?
+is body compulsory in for & while loop ?
+what is the difference between pre & post increment ?
+what is precedance & assosiativity ? what will be the sequence of operations in following statement x = i | j << 3;
+what is the use of '\0' in string ?
+how to scan string with spaces ?
+what is void pointer ?
+what is NULL pointer ?
+what is dangling pointer ?
+how poonter arithmatics happen ?
+what is the size of integer poineter & character pointer ?
+explain storage classes & thier use cases ?
+can the scope of function definition be restricted within the file ? how ?
+is it possible to access variable or function from other C file of same program, how ?
+is it possible to access automatic variable from other C file of same program ?
+how to pass array to the function ?
+what is function declaration ? why is it needed ?
+is it possible to extern variable from same file ? (try it !!!!)
+what is the difference between structure & union ?
+give one use case of union ?
+what is bitfield ?
+what is padding in structure, why & how does it happen, can it be avoided ?
+what is enum, give one example ?
+what is const ? why to make variable constant ?
+what is volatile ? when to use it ?
+what is macro ?
+how much memory will be consumed by the following macro ? #define SIZE 5
+what is the difference between MACROS & FUNCTIONS ?
+what is inline function ? what is the advantage of it ?
+what is the difference between static & dynamic memory allocation ?
+what is conditional compilation ? explain #ifdef with one example

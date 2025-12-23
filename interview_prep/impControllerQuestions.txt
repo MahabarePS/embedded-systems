@@ -1,0 +1,75 @@
+what is interrupt ?
+
+what is the difference between ISR & function ?
+
+what is volatile keyword ? when to use it ?
+
+what is interrupt latency ?
+
+how priorities work in interrupts ?
+
+can interrupt, interrupt ISR ?
+
+how many priority levels are there in 8051 ? in PIC 18f4520 ? & LPC2148 ?
+
+what is the difference between software delay & hardware delay ?
+
+what is the frame format in UART ?
+
+why pull ups are needed in I2C ?
+
+how many devices can we connect on I2C bus depends on which factors ?
+
+what are the differences between I2C & SPI ?
+
+what is resolution, step size, Ref voltage , conversion time , acquisition time in ADC ?
+
+
+
+what will be the step size in 10 bit ADC, if +Vref = 5V & -Vref = 0v ?
+
+& calculate the analog input for same ADC, if output of ADC is 00 0001 0001
+
+
+
+what is the resolution in PWM ?
+
+what is H bridge ? what is it used for ?
+
+when do we need to connect external pull ups to pins of controllers ?
+
+what is current sourcing ?
+
+what is current sinking ?
+
+how to program interrupt priorities in 8051 ?
+
+how to program interrupt priorities in ARM controller ?
+
+can ISR be interrupted by other interrupt ?
+
+what is the use of STACK in controllers ?
+
+what can be the maximum stack size in 8051 ?
+
+what will happen if we cross the maximum limit of stack ?
+
+where does PC points after reset in 8051  ?
+
+why do we need delay after every data and command in LCD ?
+
+what is key de bouncing ? how is it done ?
+
+what is pipeline ? how many stages are there in ARM 7
+
+what is the difference between ARM & Thumb instruction set ?
+
+what is the difference between SLOW & FAST GPIO in LPC controller ?
+
+write algorithm for programming TIMER in LPC controller ?
+
+what is framing & overrun error in UART ?
+
+explain calculations for interfacing LM35 temp sensor using 10 bit ADC ?
+
+what is the use of watch dog timer ?

@@ -1,0 +1,31 @@
+1. write a macro to extract the nth bit from 32bit data
+   implement following MACRO
+
+   READ_BIT(x,n);
+
+   where x will be the name of variable & n will be the bit number
+
+2. Use union to access a 32-bit data both as bytes and as a word(32-bit)
+
+3. Define & Test following Macros
+    a. macro for setting given bit of given variable   SET_BIT(x,n);
+    b. macro for resetting given bit of given variable   RESET_BIT(x,n);
+    c. macro for complementing given bit of given variable   CPL_BIT(x,n);
+    d. macro for extracting given byte number of a given variable   
+       EXTRACT_BYTE(x,n);    where x is the variable & n is the byte number
+
+4. Explain the use of following ?
+
+    typedef union 
+    {
+       uint32_t R;
+       struct 
+       {
+        uint32_t EN:1;
+        uint32_t MODE:3;
+        uint32_t RESERVED:28;
+       }bits;
+   } CTRL_Reg ;
+
+5. what is structure padding ? how to avoid it ?
+   write a program to detect whether padding has happened or not in a structure variable.
