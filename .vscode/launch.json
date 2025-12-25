@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/BICARD/embedded-systems/c programming",
-      "program": "d:/BICARD/embedded-systems/c programming/build/Debug/outDebug",
+      "cwd": "d:/BICARD/embedded-systems/cPlusPlus",
+      "program": "d:/BICARD/embedded-systems/cPlusPlus/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
