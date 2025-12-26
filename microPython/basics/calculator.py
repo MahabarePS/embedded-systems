@@ -1,0 +1,37 @@
+while True:
+    print("--------Calculator-------")
+    print("1. Addition          +")
+    print("2. Subtraction       -")
+    print("3. Multiplication    *")
+    print("4. Division          /")
+    print("Enter your numberic choice: ")
+    ch = int(input())
+    match ch:
+        case 1: 
+            print("--------Addition-------")
+            print("Enter an integer 1: ")
+            num1 = int(input())
+            print("Enter an integer 2: ")
+            num2 = int(input())
+            print("Addition is: ",num1+num2)
+        case 2:
+            print("--------Subtraction-------")
+            print("Enter an integer 1: ")
+            num1 = int(input())
+            print("Enter an integer 2: ")
+            num2 = int(input())
+            print("Subtraction is: ",num1-num2)
+        case 3: 
+            print("--------Multiplication-------")
+            print("Enter an integer 1: ")
+            num1 = int(input())
+            print("Enter an integer 2: ")
+            num2 = int(input())
+            print("Multiplication is: ",num1*num2)
+        case 4:
+            print("--------Division-------")
+            print("Enter an integer 1: ")
+            num1 = int(input())
+            print("Enter an integer 2: ")
+            num2 = int(input())
+            print("Division is: ",num1/num2)
