@@ -1,0 +1,10 @@
+Class Assignments:
+1. Write a python script for printing even, odd numbers from 1 to 100
+2. Write a python script to print all the prime numbers from 1 to 5
+3.
+4.
+List: Hetro and Homo
+5. find largest and smallest number in below list:
+    new_list=[1,5,7,8,-8,-4,55]
+6. Remove duplicate elements from belwo list:
+    rem_list=[1,1,5,6,44,8,87,45,98,44]
