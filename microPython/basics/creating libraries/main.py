@@ -4,9 +4,8 @@
  * github: https://github.com/MahabarePS
  * copyright 2025
 """
-import cal
-
-print(cal.add())
-print(cal.sub())
-print(cal.mul())
-print(cal.div())
+from cal import arithmetic as ari
+print(ari.add())
+print(ari.sub())
+print(ari.mul())
+print(ari.div())

@@ -4,18 +4,19 @@
  * github: https://github.com/MahabarePS
  * copyright 2025
 """
-def add():
-    sum=5+5
-    return sum
+class arithmetic:
+    def add():
+        sum=5+5
+        return sum
 
-def sub():
-    sub=3-2
-    return sub
+    def sub():
+        sub=3-2
+        return sub
 
-def mul():
-    mul=2*2
-    return mul
+    def mul():
+        mul=2*2
+        return mul
 
-def div():
-    div=8/2
-    return div
+    def div():
+        div=8/2
+        return div
