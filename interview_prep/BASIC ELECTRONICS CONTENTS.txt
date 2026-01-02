@@ -1,0 +1,58 @@
+Basic Electronics 
+
+1. Fundamentals 
+
+Voltage, current, resistance, power (practical view)
+Ohm’s Law, Kirchhoff’s Laws, thevenin's theorem 
+voltage divider
+
+Passive components:
+Resistors (pull-up, pull-down, current limiting)
+Capacitors (coupling, decoupling, timing)
+Inductors (filtering)
+
+
+2. Diodes 
+
+PN diode basics
+Zener diode 
+Schottky diode 
+Flyback diode 
+
+
+
+3. Transistors 
+
+BJT:
+Switching vs amplification
+
+
+MOSFET:
+N-MOS & P-MOS
+H bridge
+
+
+4. Operational Amplifiers
+
+Voltage follower
+Inverting / non-inverting
+Schmitt Trigger
+Comparator
+V TO I / I TO V converter
+
+5. Analog Sensors Interface
+
+Temperature sensors (NTC, LM35, PT100 – basics)
+Light sensors (LDR, photodiode)
+Current & voltage sensing basics
+
+Sensor output types:
+
+Voltage
+Current (4–20 mA intro)
+
+6. Power Supply Design
+
+7. MUX, DEMUX, FLIPFLOPS, LATCHES, ENCODER, DECODER
+
+8. intro to power electronics : SCR,DIAC,TRIAC etc.
