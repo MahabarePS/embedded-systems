@@ -19,21 +19,20 @@ void main(void){
     uint8_t pressCount=0;
     while(1)
     {
-        
-            while(SWITCH==0);
+        if(SWITCH==0){          //when pressed
+            __delay_ms(20);     
+            while(SWITCH==0);   //wait for release
             __delay_ms(20);
-            pressCount++;
+            pressCount++;       //inc per press
             if(pressCount==3){
+            for(int i=0;i<5;i++){
                 LED=1;
-                __delay_ms(20);
+                __delay_ms(200);
                 LED=0;
-                __delay_ms(20);
-                LED=1;
-                __delay_ms(20);
-                LED=0;
-                __delay_ms(20);
-                pressCount=0;
+                __delay_ms(200);
             }
-        
+            pressCount=0;
+            }
+        }
     }
 }
