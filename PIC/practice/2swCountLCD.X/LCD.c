@@ -1,6 +1,7 @@
 #include"LCD.h"
 volatile uint8_t swEvent=0;
 unsigned char count='\0';
+unsigned char label[]="COUNT:";
 int main(void)
 {
   TRISBbits.RB0=1; // input switch
@@ -8,7 +9,7 @@ int main(void)
   ADCON1=0x0F;
   LCD_GPIO_Init();
   LCD_Init();
-  
+  LCD_StringDisplay(label);
 //  LCD_Command(0xC0);
   while (1){
       if(SW==0){
@@ -17,5 +18,4 @@ int main(void)
           LCD_swCount(swEvent);
       }
   }
-  
 }

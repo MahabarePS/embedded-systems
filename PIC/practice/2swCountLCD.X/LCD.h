@@ -96,9 +96,12 @@ void LCD_StringDisplay(unsigned char *str)
 	}
 }
 //counting the switch count
-void LCD_swCount(uint8_t *ptr){
-    LCD_Data(ptr + '0');
+void LCD_swCount(uint8_t count){
+    LCD_Data(count+'0');
     __delay_ms(2);
+    //get the cursor back
+    LCD_Command(0x10);
+     __delay_ms(2);
 }
 
 
