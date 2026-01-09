@@ -102,11 +102,36 @@ void LCD_StringDisplay(unsigned char *str)
 }
 //counting the switch count
 void LCD_swCount(uint8_t count){
+    if(count<10){
     LCD_Data(count+'0');
     __delay_ms(2);
     //get the cursor back
     LCD_Command(0x10);
      __delay_ms(2);
+    }else{
+        uint8_t digit = count % 10, i=0,size=0,j=0;
+        unsigned char str[]={'\0'},temp='\0';
+        for(i=0;count!=0;i++){
+            str[i]= digit + 48;
+        }
+        str[i]='\0';
+        while(str[size]!='\0'){
+            size++;
+        }
+        i=0;
+        j=size-1;
+        while(i<j){
+            temp=str[i];
+            str[i]=str[j];
+            str[j]=temp;
+            i++;
+            j--;
+        }
+        size=0;
+        while(str[size]!=0){
+            LCD_Data(str[size]++);
+        }
+    }
 }
 
 void __interrupt() swISR(void){
