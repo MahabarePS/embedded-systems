@@ -5,7 +5,6 @@ int main(void)
 {
   TRISBbits.RB0=1;  // input switch
   //Timer configs
-  T1CON=0xB4;       // RD16=T1CKPS1=T1CKPS0=nT1SYNC=1
   //For exteranl interrupt
   INTCON=0x90;      // GIE=INT0IE=1
   INT0IF=0;
