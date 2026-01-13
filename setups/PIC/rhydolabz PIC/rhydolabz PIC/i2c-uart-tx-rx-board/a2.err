@@ -1,0 +1,7 @@
+Warning[226] C:\USERS\BICARD\DESKTOP\RHYDOLABZ\I2C-UART-TX-RX-BOARD\A2.ASM 75 : Destination address must be word aligned
+Warning[226] C:\USERS\BICARD\DESKTOP\RHYDOLABZ\I2C-UART-TX-RX-BOARD\A2.ASM 82 : Destination address must be word aligned
+Warning[226] C:\USERS\BICARD\DESKTOP\RHYDOLABZ\I2C-UART-TX-RX-BOARD\A2.ASM 89 : Destination address must be word aligned
+Warning[207] C:\USERS\BICARD\DESKTOP\RHYDOLABZ\I2C-UART-TX-RX-BOARD\A2.ASM 98 : Found label after column 1. (D2)
+Warning[207] C:\USERS\BICARD\DESKTOP\RHYDOLABZ\I2C-UART-TX-RX-BOARD\A2.ASM 100 : Found label after column 1. (D1)
+Warning[226] C:\USERS\BICARD\DESKTOP\RHYDOLABZ\I2C-UART-TX-RX-BOARD\A2.ASM 132 : Destination address must be word aligned
+Warning[226] C:\USERS\BICARD\DESKTOP\RHYDOLABZ\I2C-UART-TX-RX-BOARD\A2.ASM 142 : Destination address must be word aligned

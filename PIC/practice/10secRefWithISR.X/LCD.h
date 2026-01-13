@@ -18,17 +18,17 @@ extern "C" {
 #pragma config OSC = HS 
 #pragma config WDT = OFF          
 
-#define _XTAL_FREQ 8000000
+#define _XTAL_FREQ 20000000
 
 #define LCD_PORT PORTD
-#define LCD_RS RA0
-#define LCD_RW RA1
-#define LCD_EN RA2
+#define LCD_RS RC1
+#define LCD_RW RC0
+#define LCD_EN RC2
 
 #define LCD_PORT_CONFIG TRISD
-#define RS_CONFIG TRISA0 
-#define RW_CONFIG TRISA1
-#define EN_CONFIG TRISA2
+#define RS_CONFIG TRISC1
+#define RW_CONFIG TRISC0
+#define EN_CONFIG TRISC2
 
 #define OUTPUT_PIN 0
 #define INPUT_PIN 1
@@ -38,6 +38,9 @@ extern "C" {
 #define SW PORTBbits.RB0
 
 volatile uint8_t swEvent=0;
+volatile unsigned char cycle = 0;
+volatile unsigned char _10s_done=0;
+volatile uint8_t display_10s = 0;
    
 
 void LCD_GPIO_Init(void);
@@ -47,8 +50,6 @@ void LCD_Data (unsigned char );
 void LCD_StringDisplay(unsigned char *);
 
 void LCD_swCount(uint8_t count);
-void __interrupt() swISR(void);
-
 
 void LCD_GPIO_Init(void)
 {
@@ -58,7 +59,6 @@ void LCD_GPIO_Init(void)
    EN_CONFIG=OUTPUT_PIN;
 
 }
-
 
 void LCD_Init(void)
 {
@@ -126,12 +126,49 @@ void LCD_swCount(uint8_t count){
      __delay_ms(2);
 }
 
-void __interrupt() swISR(void){
-    if(INT0IF){
-        INT0IF=0;
+void Timer0_Init(void)
+{
+    T0CON = 0x07;   // OFF, 16-bit, prescaler 1:256
+    TMR0H = 0x67;
+    TMR0L = 0x69;
+
+    TMR0IF = 0;
+    TMR0IE = 1;
+    INT0IF = 0;
+    INT0IE = 1;
+    GIE = 1;
+
+    TMR0ON = 1;
+}
+
+void __interrupt() ISR(void)
+{
+    //---------- SWITCH INTERRUPT ----------
+    if (INT0IF)
+    {
+        INT0IF = 0;
         swEvent++;
     }
+    //---------- TIMER0 INTERRUPT ----------
+    if (TMR0IF)
+    {
+        TMR0IF = 0;
+
+        // reload 5s
+        TMR0H = 0x67;
+        TMR0L = 0x69;
+
+        cycle++;
+        if (cycle >= 2)   // 2 × 5s = 10s
+        {
+            cycle = 0;
+            display_10s = 1;   // signal main loop
+        }
+    }
+    
 }
+
+
 
 #ifdef	__cplusplus
 }

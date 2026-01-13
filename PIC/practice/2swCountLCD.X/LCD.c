@@ -10,6 +10,7 @@ int main(void)
   LCD_GPIO_Init();
   LCD_Init();
   LCD_StringDisplay(label);
+  SW=INPUT_PIN;
 //  LCD_Command(0xC0);
   while (1){
       if(SW==0){

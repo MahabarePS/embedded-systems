@@ -1,0 +1,7 @@
+Warning[226] C:\RHYDOLABZ\EXAMPLE CODES\I2C\EEPROM\I2C.ASM 101 : Destination address must be word aligned
+Warning[226] C:\RHYDOLABZ\EXAMPLE CODES\I2C\EEPROM\I2C.ASM 110 : Destination address must be word aligned
+Warning[226] C:\RHYDOLABZ\EXAMPLE CODES\I2C\EEPROM\I2C.ASM 121 : Destination address must be word aligned
+Warning[226] C:\RHYDOLABZ\EXAMPLE CODES\I2C\EEPROM\I2C.ASM 128 : Destination address must be word aligned
+Warning[226] C:\RHYDOLABZ\EXAMPLE CODES\I2C\EEPROM\I2C.ASM 135 : Destination address must be word aligned
+Warning[207] C:\RHYDOLABZ\EXAMPLE CODES\I2C\EEPROM\I2C.ASM 144 : Found label after column 1. (D2)
+Warning[207] C:\RHYDOLABZ\EXAMPLE CODES\I2C\EEPROM\I2C.ASM 146 : Found label after column 1. (D1)

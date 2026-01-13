@@ -1,0 +1,7 @@
+Warning[226] C:\RHYDOLABZ\BOARD_PROJECTS\I2C-BOARD\I2C.ASM 147 : Destination address must be word aligned
+Warning[226] C:\RHYDOLABZ\BOARD_PROJECTS\I2C-BOARD\I2C.ASM 154 : Destination address must be word aligned
+Warning[226] C:\RHYDOLABZ\BOARD_PROJECTS\I2C-BOARD\I2C.ASM 161 : Destination address must be word aligned
+Warning[207] C:\RHYDOLABZ\BOARD_PROJECTS\I2C-BOARD\I2C.ASM 170 : Found label after column 1. (D2)
+Warning[207] C:\RHYDOLABZ\BOARD_PROJECTS\I2C-BOARD\I2C.ASM 172 : Found label after column 1. (D1)
+Warning[226] C:\RHYDOLABZ\BOARD_PROJECTS\I2C-BOARD\I2C.ASM 228 : Destination address must be word aligned
+Warning[226] C:\RHYDOLABZ\BOARD_PROJECTS\I2C-BOARD\I2C.ASM 237 : Destination address must be word aligned

@@ -1,0 +1,3 @@
+Error[1027] C:\Users\BICARD\Desktop\rhydolabz\FreeRTOSv8.2.2\FreeRTOS\Demo\Common\Minimal\PollQ.c 103 : unable to locate 'FreeRTOS.h'
+Error[1027] C:\Users\BICARD\Desktop\rhydolabz\FreeRTOSv8.2.2\FreeRTOS\Demo\Common\Minimal\PollQ.c 104 : unable to locate 'task.h'
+Error[1027] C:\Users\BICARD\Desktop\rhydolabz\FreeRTOSv8.2.2\FreeRTOS\Demo\Common\Minimal\PollQ.c 105 : unable to locate 'queue.h'

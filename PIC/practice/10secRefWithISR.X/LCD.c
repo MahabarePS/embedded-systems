@@ -3,19 +3,23 @@ unsigned char count='\0';
 unsigned char label[]="COUNT:";
 int main(void)
 {
-  TRISBbits.RB0=1;  // input switch
-  //Timer configs
-  //For exteranl interrupt
-  INTCON=0x90;      // GIE=INT0IE=1
-  INT0IF=0;
-  ADCON1=0x0F;
-  //LCD config
-  LCD_GPIO_Init();
-  LCD_Init();
-  LCD_StringDisplay(label);  
-  while(1){
-    if(swEvent){
-        LCD_swCount(swEvent);
-    }
+    ADCON1 = 0x0F;
+    TRISBbits.RB0 = 1;
+
+    LCD_GPIO_Init();
+    LCD_Init();
+    LCD_StringDisplay("COUNT:");
+
+    Timer0_Init();
+
+    while (1)
+    {
+        if (display_10s)
+        {
+            display_10s = 0;
+
+            LCD_Command(0x86);     // move cursor
+            LCD_swCount(swEvent); // safe here
+        }
     }
 }

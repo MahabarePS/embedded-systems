@@ -18,17 +18,17 @@ extern "C" {
 #pragma config OSC = HS 
 #pragma config WDT = OFF          
 
-#define _XTAL_FREQ 8000000
+#define _XTAL_FREQ 20000000
 
 #define LCD_PORT PORTD
-#define LCD_RS RA0
-#define LCD_RW RA1
-#define LCD_EN RA2
+#define LCD_RS RC1
+#define LCD_RW RC0
+#define LCD_EN RC2
 
 #define LCD_PORT_CONFIG TRISD
-#define RS_CONFIG TRISA0 
-#define RW_CONFIG TRISA1
-#define EN_CONFIG TRISA2
+#define RS_CONFIG TRISC1 
+#define RW_CONFIG TRISC0
+#define EN_CONFIG TRISC2
 
 #define OUTPUT_PIN 0
 #define INPUT_PIN 1
@@ -36,7 +36,6 @@ extern "C" {
 #define INPUT_PORT 0xff
     
 #define SW PORTBbits.RB0
-   
 
 void LCD_GPIO_Init(void);
 void LCD_Init(void);
@@ -51,7 +50,6 @@ void LCD_GPIO_Init(void)
    RS_CONFIG=OUTPUT_PIN;
    RW_CONFIG=OUTPUT_PIN;
    EN_CONFIG=OUTPUT_PIN;
-
 }
 
 

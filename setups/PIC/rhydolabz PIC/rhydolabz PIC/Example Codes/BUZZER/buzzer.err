@@ -1,0 +1,7 @@
+Warning[207] C:\RHYDOLABZ\EXAMPLE CODES\BUZZER\BUZZER.ASM 15 : Found label after column 1. (dCnt1)
+Warning[207] C:\RHYDOLABZ\EXAMPLE CODES\BUZZER\BUZZER.ASM 16 : Found label after column 1. (dCnt2)
+Warning[207] C:\RHYDOLABZ\EXAMPLE CODES\BUZZER\BUZZER.ASM 24 : Found label after column 1. (START)
+Warning[207] C:\RHYDOLABZ\EXAMPLE CODES\BUZZER\BUZZER.ASM 32 : Found label after column 1. (AGAIN)
+Warning[207] C:\RHYDOLABZ\EXAMPLE CODES\BUZZER\BUZZER.ASM 41 : Found label after column 1. (DELAY)
+Warning[207] C:\RHYDOLABZ\EXAMPLE CODES\BUZZER\BUZZER.ASM 44 : Found label after column 1. (D2)
+Warning[207] C:\RHYDOLABZ\EXAMPLE CODES\BUZZER\BUZZER.ASM 46 : Found label after column 1. (D1)
