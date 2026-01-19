@@ -10,9 +10,9 @@ int main(void){
 }
 // printing 100 to 1 recursively
 int display(int x){
-    if(x>=1){
-        printf("%d\t",x);
-        x--;
+    if(x<1){
+        return 0;
     }
-    display(x);
+    printf("%d\n",x);
+    display(x-1);
 }
