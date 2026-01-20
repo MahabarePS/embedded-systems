@@ -12,11 +12,9 @@ int main(void)
     Timer0_init();
     while (1)
     {
-        if(SW==0){          //when pressed
-                 
+        if(SW==0){          //when pressed   
             while(SW==0);   //wait for release
-            
             pressCount++;
+        }
     }
-}
 }
