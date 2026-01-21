@@ -35,12 +35,17 @@ extern "C" {
 #define OUTPUT_PORT 0x00
 #define INPUT_PORT 0xff
     
-#define SW PORTBbits.RB4
+#define SW PORTBbits.RB0
+    
+#define DEBOUNCE_TICKS 5000 // 20ms / 4us
+ 
+unsigned char count='\0';
+unsigned char label[]="Time(ms):";
 
-volatile uint8_t swEvent=0; 
+volatile uint8_t measurement_ready=0,press_state=0;
+volatile uint16_t stamp2=0,stamp1=0, overflow_count=0;
+volatile uint32_t timestamp1=0,timestamp2=0, timeDiff=0, last_accepted_timestamp=0;
 
-uint8_t pressCount=0;
-unsigned char cycle = 0;
 
 void LCD_GPIO_Init(void);
 void LCD_Init(void);
@@ -99,63 +104,97 @@ void LCD_StringDisplay(unsigned char *str)
 		__delay_ms(2);
 	}
 }
-//counting the switch count
-void LCD_swCount(uint8_t count){
-    uint8_t i=0,size=0,digit=0;
-    unsigned char str[16];
-    //extract the digit to char
-    for(i=0;count>0;i++){
-        size++;
-        digit=count%10;
-        str[i]=digit+'0';
-        count = count/10;
+void u32_to_str(uint32_t value, unsigned char *str)
+{
+    uint8_t i = 0;
+    unsigned char temp[16];
+
+    if (value == 0) {
+        str[0] = '0';
+        str[1] = '\0';
+        return;
     }
-    str[size]='\0';
-    uint8_t j=size-1;
-    for(i=0;i<j;i++){
-        uint8_t temp = str[i];
-        str[i]=str[j];
-        str[j]=temp;
-        j--;
+
+    while (value > 0) {
+        temp[i++] = (value % 10) + '0';
+        value /= 10;
     }
-    LCD_StringDisplay(str);
-    __delay_ms(2);
-    //get the cursor back
-    LCD_Command(0x86);
-     __delay_ms(2);
+
+    for (uint8_t j = 0; j < i; j++)
+        str[j] = temp[i - j - 1];
+
+    str[i] = '\0';
 }
 
-void Timer0_init(){
-    T0CON = 0x07;   // OFF, 16-bit, prescaler 1:256
-    TMR0H = 0x67;
-    TMR0L = 0x69;
 
-    TMR0IF = 0;
-    TMR0IE = 1;
-    INT0IF = 0;
-    INT0IE = 1;
-    GIE = 1;
+void INT0_init(void)
+{
+    ADCON1 = 0x0F;                  // all digital
+    TRISBbits.TRISB0 = 1;           // RB0 input
 
-    TMR0ON = 1;
+    INTEDG0 = 0;                    // falling edge (pull-up + button to GND)
+    INT0IF = 0;                     // clear flag
+    INT0IE = 1;                     // enable INT0
 }
 
-void __interrupt() ISR(){
-    if(TMR0IF){
-                TMR0IF = 0;
+void Timer1_init(void)
+{
+    T1CON = 0;
+    T1CONbits.TMR1CS   = 0;          // Fosc/4
+    T1CONbits.T1CKPS = 0b11;         // 1:8 prescaler
+    T1CONbits.TMR1ON = 1;            // start timer
 
-                // reload 5s
-                TMR0H = 0x67;
-                TMR0L = 0x69;
-
-                cycle++;
-                if (cycle >= 2)   // 2 × 5s = 10s
-                {
-                    LCD_Init();
-                    LCD_StringDisplay("COUNT:");
-                    LCD_swCount(pressCount);
-                }
-            }
+    TMR1IF = 0;
+    TMR1IE = 1;                      // enable Timer1 overflow interrupt
 }
+
+void __interrupt() ISR(void)
+{
+    /* -------- Timer1 overflow -------- */
+    if (TMR1IF)
+    {
+        TMR1IF = 0;
+        overflow_count++;
+    }
+
+    /* -------- INT0 button event -------- */
+    if (INT0IF)
+    {
+        uint8_t h, l;
+        uint16_t tmr;
+        uint32_t timestamp;
+
+        INT0IF = 0;
+
+        /* atomic read of Timer1 */
+        h = TMR1H;
+        l = TMR1L;
+        tmr = ((uint16_t)h << 8) | l;
+
+        timestamp = ((uint32_t)overflow_count << 16) | tmr;
+
+        /* ---- debounce gate ---- */
+        if (timestamp - last_accepted_timestamp < DEBOUNCE_TICKS)
+            return;   // bounce ? ignore
+
+        last_accepted_timestamp = timestamp;
+
+        /* ---- state machine ---- */
+        if (press_state == 0)
+        {
+            timestamp1 = timestamp;
+            press_state = 1;
+        }
+        else
+        {
+            timestamp2 = timestamp;
+            measurement_ready = 1;
+            press_state = 0;
+        }
+    }
+}
+
+
 
 #ifdef	__cplusplus
 }
