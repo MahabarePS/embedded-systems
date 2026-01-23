@@ -24,36 +24,36 @@ extern "C" {
 #define INPUT_PIN 1
 
 #define ON 1
-#define OFF 1
+#define OFF 0
     
 #define PULSE_WIDTH 75
 #define BLINK_PERIOD 5000
-#define TICK_MS 1
     
 #define LED LATAbits.LA0
 
-volatile uint16_t msTick=0;
+volatile uint16_t cycle=0;
 
 
 void Timer0_init(){
     T0CON = 0x07;   // OFF, 16-bit, prescaler 1:256
-    
+    // preload for ~5 seconds
+    TMR0H = 0x67;
+    TMR0L = 0x69;
 
-    TMR0IF = 0;
-    TMR0IE = 1;
-    INT0IF = 0;
-    INT0IE = 1;
-    GIE = 1;
+    TMR0IF = OFF;
+    TMR0IE = ON;
+    GIE = ON;
 
-    TMR0ON = 1;
+    TMR0ON = ON;
 }
 
 void __interrupt() ISR(){
     if(TMR0IF){
-                TMR0IF = 0;
+                TMR0IF = OFF;
+                // reload
                 TMR0H = 0x67;
                 TMR0L = 0x69;
-                msTick++;
+                cycle=1;
             }
 }
 
