@@ -5,23 +5,23 @@ int main(void)
 {
     ADCON1 = 0x0F;
     TRISAbits.RA0 = OUTPUT_PIN;
+    LED=OFF;
     
     Timer0_init();
-    static uint16_t onTime =0,offtime=0;
-    static uint8_t ledstate = 0;
+    static uint16_t lastBlink =0,ledOnTime=0;
+    static uint8_t ledState = 0;
     
     while (1){
-        if (!ledstate && msTick>=5000)   // 5sec
+        if (!ledState && (msTick>=BLINK_PERIOD))   // 5sec
                 {
                     LED=ON;
-                    ledstate=1;
-                    onTime = msTick;
+                    ledState=1;
+                    ledOnTime = msTick;
+                    lastBlink = msTick;
                 }
-        if(ledstate &&(msTick-onTime)>=75){
+        if(ledState &&(msTick-ledOnTime>=PULSE_WIDTH)){
             LED = OFF;
-            ledstate=0;
-            msTick=0;
+            ledState=0;
         }
     }
-
 }

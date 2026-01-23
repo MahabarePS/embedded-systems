@@ -26,6 +26,10 @@ extern "C" {
 #define ON 1
 #define OFF 1
     
+#define PULSE_WIDTH 75
+#define BLINK_PERIOD 5000
+#define TICK_MS 1
+    
 #define LED LATAbits.LA0
 
 volatile uint16_t msTick=0;
