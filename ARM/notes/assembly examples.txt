@@ -1,0 +1,12 @@
+barrel shifter :
+
+LDR R0,[R1,R2,LSL#4]
+R0 <-- CONTENTS OF ADDRESS (R1+ R2<<4)
+
+MAC : instruction MLA
+
+MLA R0,R1,R2,R0
+R0 <- (R1*R2)+R0
+
+increment : for accessing consecutive locations 
+(involvement of ALU is not needed)
