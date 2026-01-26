@@ -227,3 +227,7 @@ venv/
 .vscode/
 .idea/
 .DS_Store
+
+#
+*.ioc
+**ARM/cortex-m4/stm32/workspace/STM32CubeIDE_1.14.0/STM32CubeIDE/plugins/
