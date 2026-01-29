@@ -1,0 +1,11 @@
+#include<stm32f4xx_ll_gpio.h>
+
+#define PORTC GPIOC
+#define LED_PIN GPIO_PIN_10
+
+void led_init(void);
+int main(void){
+	led_init();
+	while(1){
+
+
