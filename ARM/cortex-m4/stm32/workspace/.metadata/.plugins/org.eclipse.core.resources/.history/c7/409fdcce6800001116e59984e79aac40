@@ -1,0 +1,13 @@
+#include "stm32f4xx_hal.h"
+#include <string.h>
+//declare peripheral handle
+TIM_HandleTypeDef timer;
+ADC_HandleTypeDef adc;
+UARTHandleTypeDef uart;
+
+void tim7_init(void);
+void adc_init_conv_init(void);
+void uart_init(void);
+int main(void){
+	HAL_Init();
+}
