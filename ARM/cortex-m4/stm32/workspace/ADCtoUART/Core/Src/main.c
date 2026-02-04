@@ -43,6 +43,7 @@ void tim7_init(void){
 	  HAL_NVIC_SetPriority(TIM7_IRQn, 0, 0);
 	  HAL_NVIC_EnableIRQ(TIM7_IRQn);
 
+
 	  /*Start the TIM Base generation in interrupt mode*/
 	  HAL_TIM_Base_Start_IT(&hTim7);
 }

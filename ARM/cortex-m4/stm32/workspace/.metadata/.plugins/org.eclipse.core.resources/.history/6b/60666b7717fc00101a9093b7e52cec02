@@ -1,4 +1,0 @@
-#include<stm32>
-int main(void){
-
-}
