@@ -1,7 +1,16 @@
 #include "stm32f4xx_hal.h"
 #include <stdio.h>
 
-//printf defination
+//print definition
+int _write(int file,char * ptr, int len)
+{   int DataIdx;
+
+    for(DataIdx = 0; DataIdx < len; DataIdx++)
+      { ITM_SendChar(*ptr++); }
+
+     return len;
+
+}
 
 //declare peripheral handle
 TIM_HandleTypeDef hTim7;
@@ -13,7 +22,7 @@ void adc_init_conv_init(void);
 void uart_init(void);
 
 
-uint32_t sensor_value;
+uint16_t sensor_value;
 
 int main(void){
 	HAL_Init();
@@ -37,7 +46,7 @@ void tim7_init(void){
 	  //feedback mechanism for peripheral initialization
 	  if (HAL_TIM_Base_Init(&hTim7) != HAL_OK)
 	  {
-	      printf("Error!");
+	      _write("Error!");
 	  }
 
 	  HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
@@ -50,6 +59,7 @@ void tim7_init(void){
 }
 void TIM7_IRQHandler(void)
 {
+	_write("1 second done!");
 	HAL_TIM_IRQHandler(&hTim7);
 }
 
@@ -58,6 +68,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   if(htim->Instance==TIM7)
   {
      //start ADC
+	  _write("ADC started!");
 	  HAL_ADC_Start_IT(&hAdc1);
 	  if( HAL_ADC_PollForConversion(&hadc1,1) )
 	  {
@@ -66,8 +77,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	  else
 	  {
 	     sensor_value =  pa1_adc_read();
+	     _write("ADC data: %d",sensor_value);
 	   	 HAL_Delay(10);
 	   	 HAL_UART_Transmit(&huart2, sensor_value,sizeOf(sensor_value),1);
+	   	 _write("UART finished!");
 	   	 HAL_Delay(10);
 	  }
   }
