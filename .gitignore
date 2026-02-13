@@ -234,3 +234,11 @@ venv/
 **ARM/cortex-m4/stm32/workspace/STM32CubeIDE_1.14.0/STM32CubeIDE/plugins/
 **ARM/cortex-m4/stm32/workspace/stm32cubef4-v1-28-0/
 **ARM/cortex-m4/stm32/workspace/*.zip
+**ARM/setup/bin/
+**ARM/setup/licenses/
+**ARM/setup/platforms/
+ARM/setup/plugins/
+ARM/setup/scripts/
+ARM/setup/tests/
+ARM/setup/tools/
+ARM/setup/.renode-root
