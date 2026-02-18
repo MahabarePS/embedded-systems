@@ -38,33 +38,30 @@ Your main() loop should look clean and readable.
 */
 #include<stdio.h>
 #include<stdint.h>
-uint16_t read_light_adc();
-uint16_t adc_to_volts(uint16_t*);
-uint8_t volts_to_lux(uint16_t*);
-void LED_brightness();
+
+uint16_t read_light_adc(void);
+uint16_t adc_to_lux(uint16_t);
+uint8_t decide_brightness(uint16_t);
+void pwm_set_duty(uint8_t duty);
+void led_update();
+
+typedef enum{
+    PWM_LOW = 33,
+    PWM_MEDIUM = 66,
+    PWM_HIGH = 99
+}PWM_Level;
+
 int main(void){
     while(1){
-        LED_brightness();
+        led_update();
     }
     return 0;
 }
-void LED_brightness(){
+void led_update(void){
     uint16_t adc = read_light_adc();
-    uint16_t voltage = adc_to_volts(&adc);
-    uint8_t lux = volts_to_lux(voltage);
-    enum PWM {
-        LOW = 33,
-        MEDIUM = 66,
-        HIGH = 99
-    };
-    if(lux<100){
-        new_pwm(HIGH);
-    }else if(lux<500){
-        new_pwm(MEDIUM);
-    }else{
-        new_pwm(LOW);
-    }
-}
-void new_pwm(){
+    uint16_t lux = adc_to_lux(adc);
 
+    PWM_Level level = decide_brightness(lux);
+
+    pwm_set_duty(level);
 }
