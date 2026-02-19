@@ -41,27 +41,16 @@ Clean main()
 #include<stdio.h>
 #include<stdint.h>
 
-int main(void){
-    while(1){
-        decide_level();
+int main(void)
+{
+    while (1)
+    {
+        uint16_t input = get_input();
+        uint16_t transformed = transform(input);
+        uint8_t level = decide_level(transformed);
+        apply_action(level);
     }
+
     return 0;
 }
-void decide_level(){
-    uint16_t level = transform();
-    if(level <50){
-        apply_action();
-    }
-    else{
-        return;
-    }
-}
-uint16_t transform(){
-    uint16_t input = get_input();
-    // add 3 to each digit of input
-    return; //transformed level
 
-}
-uint16_t get_input(){
-    //get some input
-}
