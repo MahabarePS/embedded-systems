@@ -29,16 +29,23 @@ How should API look?
 */
 #include<stdio.h>
 #include<stdint.h>
+typedef struct{
+    uint16_t history[5];
+    uint8_t index;
+    uint32_t sum;
+}MovingAverageFilter;
 typedef enum{
     LOW = 5,
     MEDIUM = 25,
-    High = 35
+    HIGH = 35
 }Threshold;
+MovingAverageFilter temp_filter_instance;
 int main(void){
+    filter_init(&temp_filter_instance);
     while(1){
         uint16_t temp = read_temp();
-        uint16_t filter = temp_filter(temp);
-        Threshold level = check_threshold(filter);
+        uint16_t filtered = filter_update(&temp_filter_instance, temp);
+        Threshold level = check_threshold(filtered);
         trigger_alarm(level);
     }
     return 0;
