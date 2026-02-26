@@ -14,34 +14,7 @@ Hardware Concept
 
 A voltage divider using two resistors:
 
-𝑉
-𝑜
-𝑢
-𝑡
-=
-𝑉
-𝑖
-𝑛
-×
-𝑅
-2
-𝑅
-1
-+
-𝑅
-2
-V
-out
-	​
-
-=V
-in
-	​
-
-×
-R1+R2
-R2
-	​
+𝑉𝑜𝑢𝑡 = 𝑉𝑖𝑛×(𝑅2/(𝑅1+𝑅2))	​
 
 📌 Your Task
 
@@ -126,4 +99,10 @@ typedef struct{
     uint16_t r1;
     uint16_t r2;
     uint16_t Vin;
+    uint16_t Vout;
 }VoltageDivider;
+
+int main(void){
+    
+    return 0;
+}
