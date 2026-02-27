@@ -86,3 +86,7 @@ Step 2: Rules of Ownership
             - system.c
             - or app.c
             and not inside a driver.
+
+    Driver reports facts!
+    Application decide actions i.e. it decides policy!
+    Power module executes hardware sleep/shutdown!
