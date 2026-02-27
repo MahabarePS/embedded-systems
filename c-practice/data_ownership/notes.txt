@@ -1,0 +1,88 @@
+Ownership: Who is responsible for this data's correctness and 
+            lifetime?
+
+    who creates it?
+    who modifies it?
+    who destroys it?
+    who guarantees it's valid?
+
+Step 1: Start from the Physical World!
+
+    Everything represenst something physical.
+
+    | Physical Thing     | Firmware Representation | Natural Owner     |
+    | ------------------ | ----------------------- | ----------------- |
+    | Temperature sensor | `uint16_t temperature`  | Sensor driver     |
+    | UART peripheral    | `UART_Handle`           | UART driver       |
+    | LED state          | `bool led_state`        | LED module        |
+    | System mode        | `enum Mode`             | Application layer |
+
+    Ownership should mirror physical control.
+
+Step 2: Rules of Ownership
+
+    RULE 1: The Creator Owns it
+
+            If a module:
+
+                        allocates
+                        initializes
+                        configures
+
+            Then it owns the data.
+
+            EX: 
+                static uint16_t adc_value;
+            
+            If this is inside "adc.c" then "adc.c" owns it.
+            Other modules should not touch it directly.
+    
+    RULE 2: If it represents Hardware -> Driver Owns it
+
+            EX:
+                uint16_t temperature;
+
+            Ask yourself:
+
+                Is temperature a physical sensor reading?
+
+                YES!
+
+                Then:
+
+                    - Only temp_sensor.c updates it.
+                    - Other modules read via functions
+
+                    Correct way : uint16_t TempSensor_GetValue(void);
+
+                    Wrong Way   : extern uint16_t temperature;
+    
+    RULE 3: IF multiple Modules Modify it -> Architecture is Wrong
+
+        Others should request changes vis API.
+
+    RULE 4: Application Owns System State
+
+        Low level drivers own:
+
+            - registers
+            - buffers
+            - hardware states
+
+        High level main() owns:
+
+            - system mode
+            - co-ordination logic
+            - decision making
+
+        Ex:
+            typedef enum {
+                MODE_IDLE,
+                MODE_RUN,
+                MODE_ERROR
+            } SystemMode;
+
+            This belongs in:
+            - system.c
+            - or app.c
+            and not inside a driver.
