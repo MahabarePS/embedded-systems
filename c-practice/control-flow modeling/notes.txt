@@ -1,0 +1,16 @@
+Loops: Repeat this until a condition changes.
+
+    Before choosing for, while, or do-while, ask:
+
+        1. What changes each iteration?
+
+        2. Who owns that changes?
+
+        3. What makes it stop?
+
+        FOR: When Iteration Count Is Known 
+
+            - You know how many times
+            - Or you're iterating over a fixed size
+            - Or you're stepping by a fixed increment
+
