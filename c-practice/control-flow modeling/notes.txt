@@ -14,3 +14,24 @@ Loops: Repeat this until a condition changes.
             - Or you're iterating over a fixed size
             - Or you're stepping by a fixed increment
 
+            EX:
+                - Scan 8 GPIO pins
+                - Transmit 16 bytes
+                - Fill 100-element buffer
+
+        WHILE: When Condition Controls lifetime
+
+            - Iterations are unknown
+            - Loop depends on external state
+            - You're waiting for something
+
+            EX:
+                - wait for button press
+                - wait for ADC conversion complete
+                - Run until buffer empty
+
+        DO-WHILE: When it must run at least once
+
+            EX:
+                - Menu input
+                - Retry-at -least-once operations
