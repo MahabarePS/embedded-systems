@@ -1,0 +1,63 @@
+The Operators:
+
+    ++x -> Increment first, then use value
+    x++ -> Use value first, then increment value
+
+    same logic for decrement
+
+What "use value" means:
+
+    The value that participates in the current expression.
+    Not what's store afterwards.
+
+    Ex:
+        int x = 5;
+
+            x-> 5;
+
+            Case 1: Pre-increment
+
+                    int y = ++x;
+
+                    - Increment x -> x becomes 6
+                    - Assign that value to y
+
+                    i.e. x = 6
+                         y = 6
+
+                    Use: 
+
+                        - you need incremented value immediately 
+                        - In pointer arithmetic for effifiency (especially in C++)
+                        - In complex expressions where clarity matters
+
+            Case 2: Post-increment
+
+                    int y =x++;
+
+                    - Use current x (5)
+                    - Assign 5 to y
+                    - Increment x -> becomes 6
+
+                    i.e. x = 6
+                         y = 5
+
+                    Use:
+
+                        - you just want to move forward
+                        - value of expression does not matter
+                        - class loop increment
+
+
+IMPORTANT:
+
+    i++
+    ++i
+
+    are usually compiled the same for integers.
+
+    But with interators in C++:
+
+        ++i can be faster.
+
+Never modify a variable more than once in a single expression.
