@@ -1,0 +1,100 @@
+Union:
+    User-defined type where:
+
+    - All members share the same memory location
+    - Only one memeber is valid at a time
+    - Size = size of the largest member
+
+    A union is one memory box that can wear different
+    " interpretation lenses "
+
+    union Data{
+        uint16_t raw;
+        struct {
+            uint8_t low;
+            uint8_t high;
+        }bytes;
+    };
+
+    Memory Layout -> | 2 bytes total |
+    If you write  -> d.raw = 0x1234;
+    Then          -> d.bytes.low = 0x34
+                     d.bytes.high= 0x12 (little endian system)
+
+    When Do We Use Unions:
+
+    | Situation                 | Why union helps                |
+    | ------------------------- | ------------------------------ |
+    | Protocol parsing          | Same data, different view      |
+    | Hardware register mapping | Bit-level access + full access |
+    | Memory optimization       | Only one state active          |
+    | Type punning              | Reinterpret bits               |
+
+
+    Real Embedded Example:
+
+    Imagine a 16-bit hardware register: Bit 15 14 13 ... 1 0
+
+    You want:
+        - Full 16-bit access
+        - Individual bit access
+
+    Solution:
+
+        typedef union{
+            uint16_t reg;
+            struct{
+                uint16_t enable : 1;
+                uint16_t mode   : 2;
+                uint16_t error  : 1;
+                uint16_t unused : 12;
+            } bits;
+        }   ControlRegister;
+
+    Now:
+        ControlRegister ctrl;
+
+        ctrl.reg = 0x0005;      //Full write
+        ctrl.bits.enable =1     //bit write
+
+    Same memory. Two interpretations.
+
+    That is union power.
+
+    How To Decide When To Use It?
+
+    Is this the same physical memory but I need different views?
+    Is memory tight and only one state is active at a time?:
+
+        enum State { TEMP, VOLTAGE };
+
+        union SensorData {
+            uint16_t temp;
+            uint16_t voltage;
+        };
+
+    NOT TO USE WHEN:
+        -When members must coexist
+        -When lifetime of members overlaps
+        -When readability becomes confusing
+        -When strict aliasing rules may break optimization
+
+
+    ⚠ Strict aliasing rule
+
+        Accessing a union member different from the last written member
+            → can cause undefined behavior in some cases.
+
+        Compilers may optimize incorrectly.
+
+        Embedded compilers usually tolerate it, but you must know this.
+
+
+    Key Differences: struct vs union
+
+    | Feature            | struct         | union                 |
+    | ------------------ | -------------- | --------------------- |
+    | Memory shared?     | No             | Yes                   |
+    | Size               | Sum of members | Largest member        |
+    | All members valid? | Yes            | No                    |
+    | Used for           | Data grouping  | Data reinterpretation |
