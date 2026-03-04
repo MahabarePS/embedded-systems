@@ -1,0 +1,103 @@
+How to Decide Which Conversion to Use:
+
+| Situation                | Use              |
+| ------------------------ | ---------------- |
+| User input from UART     | char → int       |
+| Parsing sensor text data | string → float   |
+| Sending data over serial | int → string     |
+| Binary protocol          | bit manipulation |
+
+Why do we store 34 and divide by 100 instead of directly building 0.34?
+
+        The Real Reason
+
+        When parsing "12.34" from a string, we only see characters:
+
+        '1' '2' '.' '3' '4'
+
+        Characters don't contain floating-point information.
+
+        So we must reconstruct the number mathematically.
+
+        Mathematical Representation
+        12.34
+
+        is actually:
+
+        12 + 3/10 + 4/100
+
+        Which can be rewritten as:
+
+        12 + 34/100
+
+        That is exactly what the code does.
+
+        Why We Store 34
+
+        Because the digits after the decimal:
+
+        "34"
+
+        are just an integer sequence.
+
+        So we convert them normally:
+
+        34
+
+        Then scale it:
+
+        34 / 100 = 0.34
+        Firmware Engineer Mental Model
+
+        Think of the decimal point as a scaling factor.
+
+        digits_after_decimal / 10^number_of_digits
+
+        Example:
+
+        Input	Fraction	Divisor
+        0.5	5	10
+        0.25	25	100
+        0.375	375	1000
+        Why This Approach Is Powerful
+
+        This same technique works for:
+
+        string → float
+
+        string → fixed-point numbers
+
+        sensor data parsing
+
+        protocol decoding
+
+        And it avoids expensive functions like:
+
+        atof()
+        strtod()
+        sscanf()
+        One Embedded Insight (Very Important)
+
+        In many microcontrollers we don't even use float.
+
+        Instead we store:
+
+        12.34  → 1234
+
+        and remember:
+
+        scale = 100
+
+        This is called fixed-point arithmetic and is widely used in firmware.
+
+        Example:
+
+        temperature = 2534
+        means
+        25.34 °C
+        Your Answer Score
+        Concept	Score
+        Understanding decimal reconstruction	✅
+        Understanding hardware limitations	⚠️ (related but not the core reason)
+
+        So you're close, but the correct fundamental reason is positional number representation.
