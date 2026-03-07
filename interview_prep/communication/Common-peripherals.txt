@@ -1,0 +1,58 @@
+The Simplest Visual Way to Remember:
+              MICROCONTROLLER
+
+                 CPU
+                  |
+   ------------------------------------------------
+   |         |            |          |            |
+ INPUT     OUTPUT     COMMUNICATION  TIMING     DATA
+   |         |            |          |            |
+ GPIO       PWM         UART        TIMER        DMA
+ ADC        GPIO        SPI         WDT
+                        I2C
+
+What peripherals exist in a microcontroller?
+    Think in 5 categgory:
+        - Input
+        - Output
+        - Communication (Data exchange bet MCU and exteral devices)
+        - Timing 
+        - Data transfer (Moving data inside (memory<->peripherals))
+        -------------------------------------------------------------
+        1. Communication: Outside world interaction
+            - UART
+            - SPI
+            - I2C
+            - CAN
+            - USB
+            Example: Sensor  ----I2C---->  Microcontroller
+                     PC  ----UART---->  Microcontroller
+
+            What CPU does:
+                - Configures the peripheral
+                - Sends or receives data
+                - Handles interrupts
+
+
+                External Device  <---->  Microcontroller
+                Sensor  <--I2C--> MCU
+                PC      <--UART--> MCU
+                Flash   <--SPI--> MCU
+
+        ------------------------------------------------------------
+        2. Data Transfer: 
+            - DMA (Direct Memory Access)
+            Example: 
+            ADC samples a signal and stores it into RAM.
+
+            ADC  ---->  RAM
+            
+            With CPU:
+            
+            ADC -> CPU -> RAM
+            
+            With DMA:
+            
+            ADC ----DMA----> RAM
+
+            CPU is bypassed, which improves performance
