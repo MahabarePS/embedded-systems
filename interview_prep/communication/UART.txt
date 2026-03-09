@@ -1,0 +1,50 @@
+UART (Universal Asynchronous Receiver Transmitter):
+
+    1. What problem UART solves?
+
+        MCU need a way to send bytes to another device.
+
+        UART sends data serially (1 bit at a time) over two wires.
+
+        Tx -> transmit
+        Rx -> receive
+        GND -> common ground
+
+
+    2. Why is it called Asynchronous?
+
+        Unlike SPI/I2C, UART has no clock line.
+
+        both the devices agree beforehand on timing.
+
+        Example configuration:
+
+            Baud rate: 9600
+            Data bits: 8
+            Parity: None
+            Stop bits: 1
+
+            This is often written as: 9600 8N1
+
+    3. How one byte is transmitted?
+
+        Example sending letter 'A'
+        
+        ASCII of 'A': 01000001
+
+        UART frame:
+
+        Idle  Start  Data bits (LSB first)   Stop
+        1      0     1 0 0 0 0 0 1 0          1
+
+        Timeline:
+
+        ----1----|0|1|0|0|0|0|0|1|0|1|
+                 ↑
+                Start bit
+
+        Key rules:
+
+        - Start bit = 0
+        - Stop bit  = 1
+        - LSB transmitted first
