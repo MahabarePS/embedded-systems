@@ -1,0 +1,37 @@
+Combinational Logic Block (No Memory)
+
+    Output depends only on current inputs.
+
+    Common ones you should recognize:
+
+    | Circuit                      | Purpose                               | Where Seen in MCUs |
+    | ---------------------------- | ------------------------------------- | ------------------ |
+    | **Buffer**                   | Strengthens signal, isolates circuits | GPIO drivers       |
+    | **Tri-state buffer**         | Connect/disconnect from bus           | Internal data bus  |
+    | **Schmitt Trigger**          | Cleans noisy signals                  | GPIO inputs        |
+    | **Multiplexer (MUX)**        | Select one signal from many           | Peripheral routing |
+    | **Demultiplexer (DEMUX)**    | Route one input to many outputs       | Interrupt routing  |
+    | **Decoder**                  | Converts binary to one-hot            | Address decoding   |
+    | **Encoder**                  | Opposite of decoder                   | Interrupt priority |
+    | **Comparator**               | Compares two signals                  | Analog comparator  |
+    | **Adder / ALU blocks**       | Arithmetic operations                 | CPU core           |
+    | **Logic gates** (AND/OR/XOR) | Basic logic                           | Everywhere         |
+
+
+Sequential Logic Block (Have Memory)
+
+    Output depends on previouw state.
+
+    These are extremely common in MCU peripherals:
+
+    | Circuit            | Purpose               | Where Used            |
+    | ------------------ | --------------------- | --------------------- |
+    | **Latch**          | Store temporary value | Timer read buffers    |
+    | **Flip-flop**      | Store 1 bit state     | Registers             |
+    | **Register**       | Multiple flip-flops   | CPU registers         |
+    | **Counter**        | Count pulses          | Timers                |
+    | **Shift register** | Move bits serially    | SPI/UART              |
+    | **State machine**  | Control sequences     | Protocol engines      |
+    | **FIFO buffer**    | Queue data            | UART / DMA            |
+    | **Edge detector**  | Detect signal change  | Interrupts            |
+    | **Synchronizer**   | Prevent metastability | Clock domain crossing |
