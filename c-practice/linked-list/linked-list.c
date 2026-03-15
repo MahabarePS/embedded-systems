@@ -35,6 +35,12 @@ typedef struct EventNode{
     EventType event_id;      
     struct EventNode *next;
 }EventNode;
+//List container
+typedef struct EventList{
+    EventNode *head;
+    EventNode *tail;
+    uint32_t count;
+}EventList;
 int main(void){
 
     return 0;
