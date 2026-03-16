@@ -41,7 +41,21 @@ typedef struct EventList{
     EventNode *tail;
     uint32_t count;
 }EventList;
-int main(void){
 
+int main(void){
+    EventNode* create_event_node(EVENT_UART_RX);
     return 0;
+}
+
+EventNode* create_event_node(uint32_t event_id){
+    //allocate memory for new node
+    EventNode *newEventNode = malloc(sizeof(EventNode));
+    if(newEventNode==NULL){
+        return NULL;
+    }
+    //initialize fields
+    newEventNode->event_id=event_id;
+    newEventNode->next=NULL;
+    //return pointer
+    return newEventNode;
 }
