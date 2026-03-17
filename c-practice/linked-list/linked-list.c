@@ -59,3 +59,16 @@ EventNode* create_event_node(uint32_t event_id){
     //return pointer
     return newEventNode;
 }
+// Creating enqueue function
+void enqueue(EventList *queue, EventNode *node){
+    //if list is empty
+    if(queue->head==NULL){
+        queue->head = node;
+        queue->tail = node;
+    }else{
+        queue->tail->next = node;
+        queue->tail = node;
+    }
+    //Increase count
+    queue->count++;
+}
