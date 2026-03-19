@@ -72,3 +72,20 @@ void enqueue(EventList *queue, EventNode *node){
     //Increase count
     queue->count++;
 }
+//Creating dequeue function
+//EventNode* because the caller cannot access removed node.
+EventNode* dequeue(EventList *queue){
+    //If the queue is empty
+    if(queue->head==NULL){
+        return NULL;
+    }
+        EventNode *old_head = queue->head;
+        //Move head to next
+        queue->head = queue->head->next;
+        //if list becomes empty
+        if(queue->head==NULL){
+            queue->tail=NULL;
+        }
+        queue->count--;
+    return old_head;  
+}
