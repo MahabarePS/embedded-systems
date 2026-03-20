@@ -1873,3 +1873,169 @@ Level 3 Score
 Only A2 and A4 needed correction.
 
 You’re progressing well.
+
+Your Architecture Question (Very Good)
+
+why did we use EventNode* instead of static const?
+
+This is a deep systems question. Let’s break it properly.
+
+1. What You’re Suggesting
+
+You’re thinking:
+
+static const EventNode node;
+
+Instead of:
+
+EventNode *node = malloc(...)
+
+Good thought — you're questioning memory model vs runtime allocation.
+
+2. Why We Use EventNode* (Dynamic Allocation)
+
+Because linked list requires:
+
+dynamic number of nodes
+
+At runtime:
+
+events arrive unpredictably
+
+So we need:
+
+allocate → use → free
+Visual
+Time →
+Event1 → Event2 → Event3 → Event4 → ...
+
+We don’t know count beforehand.
+
+3. Why static const Won’t Work
+❌ Problem 1 — Fixed Memory
+static EventNode node;
+
+This creates:
+
+one node only
+
+Not scalable.
+
+❌ Problem 2 — Not Modifiable (const)
+static const EventNode node;
+
+Now:
+
+node.next = something; ❌
+
+Illegal.
+
+But linked list needs to change pointers.
+
+❌ Problem 3 — No Runtime Flexibility
+
+Static memory = compile-time allocation.
+
+But event queue is:
+
+runtime-driven
+4. When Static Nodes ARE Used (Advanced Insight)
+
+Your thinking is actually used in embedded systems.
+
+Instead of malloc:
+
+preallocate nodes
+
+Example:
+
+#define MAX_NODES 10
+
+static EventNode pool[MAX_NODES];
+
+Then manage manually:
+
+free_list → available nodes
+🔥 This is called: Memory Pool
+Free list:
+
+Node1 → Node2 → Node3 → Node4
+
+Allocate:
+
+take from free list
+
+Free:
+
+return to free list
+Why This Is Powerful
+malloc	memory pool
+slow	fast
+fragmentation	no fragmentation
+unpredictable	deterministic
+not RTOS safe	RTOS safe
+🧠 Firmware Reality
+
+In real embedded systems:
+
+❌ malloc is often banned
+✅ memory pools are used
+🔥 Key Insight
+
+We use:
+
+EventNode*
+
+because:
+
+linked list = dynamic structure
+pointer = dynamic connection
+⚡ Advanced Thought (You’re Ready for This)
+
+There are 3 memory strategies:
+
+Strategy	Used in
+stack	small temp data
+heap (malloc)	general apps
+memory pool	embedded / RTOS
+🚀 What You Just Unlocked
+
+You just touched:
+
+dynamic vs static allocation
+
+memory ownership
+
+runtime vs compile-time design
+
+This is core systems thinking.
+
+Next Step (Important Upgrade)
+
+Now I’ll show you something that removes almost all edge cases:
+
+👉 Sentinel Node (Dummy Node)
+
+This is used in:
+
+OS kernels
+
+high-performance systems
+
+It eliminates:
+
+if (head == NULL) checks ❌
+Before Moving
+
+Answer this:
+
+Question
+
+If we use a memory pool instead of malloc, what new responsibility does the programmer get?
+
+(Hint: think in terms of allocation + deallocation control)
+
+After this, we move to:
+
+🔥 Sentinel node (no edge cases)
+🔥 Intrusive linked list (Linux kernel level — very powerful)
