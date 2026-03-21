@@ -101,3 +101,185 @@ Why do we store 34 and divide by 100 instead of directly building 0.34?
         Understanding hardware limitations	⚠️ (related but not the core reason)
 
         So you're close, but the correct fundamental reason is positional number representation.
+
+        Now Let's Test Your Understanding
+Question 1
+
+If the input string is:
+
+"7.125"
+
+After parsing, what will these values be?
+
+fraction = ?
+divisor = ?
+
+and what will the function return?
+
+result + fraction/divisor = ?
+Question 2 (Firmware thinking)
+
+Why does this work for both integer and binary parsing?
+
+result = result * base + digit
+
+Example:
+
+base = 10 → decimal
+base = 2  → binary
+base = 16 → hex
+
+Answer both. If you get them right, I’ll move you to a very powerful concept most C programmers never learn:
+
+Writing a universal number parser that can convert ANY base (2–36) without libraries.
+
+This will dramatically sharpen your C logic.
+
+A1 -> fraction = 125 divisor = 1000 and result = 7.125 A2 -> I'm not sure why it works for binary parser honestly
+
+Your A1 is correct. ✅
+Let's verify it like a firmware engineer.
+
+Input:
+
+"7.125"
+
+Integer part:
+
+result = 7
+
+Fraction loop builds:
+
+fraction = 125
+divisor  = 1000
+
+Final:
+
+7 + 125/1000 = 7.125
+
+So A1 = 100% correct.
+
+Now let's fix A2 (This is a very powerful concept)
+
+You said you weren't sure why this works:
+
+result = result * base + digit;
+
+This works because of positional number systems.
+
+Every number system follows this rule.
+
+Decimal Example (base 10)
+
+Number:
+
+123
+
+Mathematically:
+
+1×10² + 2×10¹ + 3×10⁰
+
+Now watch what the algorithm does.
+
+Start:
+
+result = 0
+First digit (1)
+result = 0 * 10 + 1
+result = 1
+Second digit (2)
+result = 1 * 10 + 2
+result = 12
+Third digit (3)
+result = 12 * 10 + 3
+result = 123
+
+You just reconstructed:
+
+1×10² + 2×10¹ + 3×10⁰
+
+without explicitly computing powers.
+
+Binary Example (base 2)
+
+Binary:
+
+1011
+
+Math:
+
+1×2³ + 0×2² + 1×2¹ + 1×2⁰
+
+Now apply the same algorithm.
+
+Start:
+
+result = 0
+First digit (1)
+result = 0 * 2 + 1
+result = 1
+Second digit (0)
+result = 1 * 2 + 0
+result = 2
+Third digit (1)
+result = 2 * 2 + 1
+result = 5
+Fourth digit (1)
+result = 5 * 2 + 1
+result = 11
+
+Which is correct:
+
+1011₂ = 11₁₀
+Why This Is So Powerful
+
+Because every positional number system follows the same rule:
+
+digit × base^position
+
+The algorithm simply builds the powers automatically.
+
+Instead of computing:
+
+10²
+10¹
+10⁰
+
+we do:
+
+multiply by base each step
+Firmware Engineer Insight
+
+This one line:
+
+result = result * base + digit;
+
+can parse any number system:
+
+Base	Number
+2	binary
+8	octal
+10	decimal
+16	hex
+36	alphanumeric
+
+Example:
+
+"1A" in hex
+result = 0*16 + 1 = 1
+result = 1*16 + 10 = 26
+Why This Is Important for Embedded Engineers
+
+This exact algorithm is used in:
+
+UART command parsing
+
+protocol decoding
+
+hex register parsing
+
+bootloaders
+
+shell interpreters
+
+Many firmware systems implement their own parsers using this idea.
