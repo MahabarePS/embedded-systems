@@ -1,0 +1,108 @@
+DATAYPE SELECTION:
+
+    REAL WORLD VALUE -> RANGE -> MEMORY SIZE -> DATATYPE 
+
+    Example:
+
+        Temperature sensor: -40°C to 125°C
+        → Range needed: ~ -50 to 150
+        → Memory: 1 byte enough? (No, signed 8-bit = -128 to 127 → borderline)
+        → Better: int16_t
+
+
+    DECISION FRAMEWORK:
+
+        1. RANGE
+            - Min? Max?
+            - Signed or Unsigned?
+
+        2. PRECISION
+            - Integer or floating?
+            - Do I need decimals?
+            
+        3. MEMORY CONSTRAINTS
+            - Embeddedd -> RAM is gold
+            - Can I reduce size safely?
+
+        4. HARDWARE INTERACTION
+            - Register size? (8-bit MCU -> prefer 8/16 bit)
+            - ADC resolution?
+
+        5. PERFORMANCE
+            - float is expensive on MCU (no FPU)
+
+
+    TRICK TO REMEMBER:
+
+        1. "1-2-4-RULE":
+                            1 byte -> 8-bit  -> 0 to 255    -> uint8_t  -> flags, small values
+                            2 byte -> 16-bit -> 65535       -> uint16_t -> ADC, counters
+                            4 byte -> 32-bit -> very large  -> uint32_t -> timers, large counts 
+
+        2. SIGNED RANGE SHORTCUT:
+                                    unsigned max = 2^n -1
+                                    signed range = +-(2^(n-1))
+
+                                    signed cuts range in half and adds negative.
+
+        3. WHAT CAN BREAK:  What can go wrong if i pick wrong type?
+
+                            overflow?
+                            negative values?
+                            precision loss?
+                            memory waste?
+
+                            your brain remembers risks better than numbers.
+
+        4. EMBEDDED SHORTCUT:
+                                8-bit MCU   -> use 8/16
+                                16-bit MCU  -> use 16
+                                32-bit MCU  -> use 32
+
+                                why?
+
+                                - Faster
+                                - Natural for CPU
+                                - Less instruction overhead
+
+        5. REPLACE FLOAT MEMORY TRICK:
+         
+                                        If decimal -> try scaling first
+                                        If unavoidable -> float (4 bytes)
+                                        
+                                        Example:
+                                            Instead of: float temp = 23.56;
+                                            use: int16_t temp = 2356; scaled by 100
+
+
+Given:
+
+    uint16_t adc = 4095;
+    adc = adc * 100;
+
+    HIDDEN PROBLEM: even if result fits in "uint32_t", this can still OVERFLOW.
+
+    WHY: "c integer promotion rules" | Bz operation happens in the datatype of operands: 
+    
+        uint16_t * int -> promoted to int (usually 16-bit or 32-bit)
+
+        CASE: 16-bit MCU
+            int = 16-bit
+            Max = 32727
+            Now:
+                4095 * 100 = 409500 X exceeds 32727
+                Overflow happens BEFORE assignment
+
+            This is the trap most people never learn: uint32_t result = adc * 100; still overflow possible
+
+            CORRECT WAY:
+
+            uint32_t result = (uint32_t)adc * 100;
+
+            Now multiplication happens in 32-bit 
+
+
+RULE UPGRADE:
+
+    datatype selection is not enough
+    you must control datatype before operations
