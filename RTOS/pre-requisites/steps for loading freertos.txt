@@ -1,0 +1,20 @@
+1. create STM32 project
+2. ioc -> system core -> change time base systick to T1 save & generate code
+         -- systick should be dedicated for RTOS
+3. download freertos from freertos.org & extract
+4. create a copy of extracted folder
+5. delete folders other than freertos-LTS
+6. delete folders other than FreeRTOS-Kernel
+7. delete examples folder in FreeRTOS-Kernel
+8. in freertos-> portable -> delete folders other than gcc & memmang
+9. in gcc ->  delete folders other than ARM_CM4F
+10. in memmang-> delete files other than heap_4.c
+11. COPY freertos-kernel folder & paste in STM project 
+12. copy given FreeRTOSConfig.h file in project->freertos-kernel->include 
+13. build project
+14. right click on project->proprties->c c++ general->paths&symbols->Add->workspace
+    ->... include following paths
+          freertos->portable->gcc->ARM_CM4F
+          FreeRtos->include
+15. right click on project->proprties->c c++ general->paths&symbols
+    ->source location->freeRTOS-kernel 
