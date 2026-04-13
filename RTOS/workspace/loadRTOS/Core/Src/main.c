@@ -1,3 +1,5 @@
+#include<stm32f4xx_hal.h>
+#include "ledBlink.h"
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
@@ -66,7 +68,7 @@ static void MX_USART2_UART_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+	LED_init();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -99,6 +101,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_11);
+	  HAL_Delay(100);
   }
   /* USER CODE END 3 */
 }
@@ -221,7 +225,24 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void LED_init(void){
+GPIO_InitTypeDef GPIOstruct={0};
+//assign the clock to the LED PORT
+__HAL_RCC_GPIOC_CLK_ENABLE();
+GPIOstruct.Pin=LED_PIN;
+GPIOstruct.Mode=GPIO_MODE_OUTPUT_PP;
+GPIOstruct.Pull=GPIO_NOPULL;
+GPIOstruct.Speed=GPIO_SPEED_FREQ_LOW;
+HAL_GPIO_Init(LED_PORT,&GPIOstruct);
 
+//assign the clock to the LED PORT
+__HAL_RCC_GPIOC_CLK_ENABLE();
+GPIOstruct.Pin=LED_PIN2;
+GPIOstruct.Mode=GPIO_MODE_OUTPUT_PP;
+GPIOstruct.Pull=GPIO_NOPULL;
+GPIOstruct.Speed=GPIO_SPEED_FREQ_LOW;
+HAL_GPIO_Init(LED_PORT,&GPIOstruct);
+}
 /* USER CODE END 4 */
 
 /**
