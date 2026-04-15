@@ -243,4 +243,5 @@ ARM/setup/tests/
 ARM/setup/tools/
 ARM/setup/.renode-root
 #excluding the extracted RTOS folder
-RTOS/pre-requisites/FreeRTOS/FreeRTOS-LTS - Copy/*
+RTOS/pre-requisites/FreeRTOS-LTS - Copy/
+RTOS/pre-requisites/FreeRTOSv202406.04-LTS.zip
