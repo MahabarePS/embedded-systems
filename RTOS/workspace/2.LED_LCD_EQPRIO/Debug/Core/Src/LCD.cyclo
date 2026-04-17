@@ -1,0 +1,6 @@
+../Core/Src/LCD.c:5:6:LCD_GPIO_Init	1
+../Core/Src/LCD.c:27:6:LCD_Init	1
+../Core/Src/LCD.c:39:6:LCD_Command	1
+../Core/Src/LCD.c:56:6:LCD_Data	1
+../Core/Src/LCD.c:73:6:LCD_StringDisplay	2
+../Core/Src/LCD.c:83:6:Lcd_display	2
