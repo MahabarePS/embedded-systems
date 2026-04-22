@@ -228,20 +228,34 @@ venv/
 .idea/
 .DS_Store
 
-#
-*.ioc
-*.metadata
-**ARM/cortex-m4/stm32/workspace/STM32CubeIDE_1.14.0/STM32CubeIDE/plugins/
-**ARM/cortex-m4/stm32/workspace/stm32cubef4-v1-28-0/
-**ARM/cortex-m4/stm32/workspace/*.zip
-**ARM/setup/bin/
-**ARM/setup/licenses/
-**ARM/setup/platforms/
-ARM/setup/plugins/
-ARM/setup/scripts/
-ARM/setup/tests/
-ARM/setup/tools/
-ARM/setup/.renode-root
-#excluding the extracted RTOS folder
-RTOS/pre-requisites/FreeRTOS-LTS - Copy/
-RTOS/pre-requisites/FreeRTOSv202406.04-LTS.zip
+# STM32CubeIDE Workspace metadata
+.metadata/
+.settings/
+.plugins/
+
+
+# STM32CubeF4 Firmware Package (v1.28.0 and others)
+# This folder is massive and should not be in your repo
+stm32cubef4-v1-28-0/
+STM32Cube/
+ARM/setup/
+
+# Build artifacts
+Debug/
+Release/
+*.elf
+*.bin
+*.hex
+*.map
+*.list
+*.o
+*.d
+*.su
+
+# IDE-specific files
+*.launch
+.project
+.cproject
+
+# \IoT
+**IoT/Libraries/*
