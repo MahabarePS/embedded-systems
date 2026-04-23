@@ -9,17 +9,17 @@ IoT-Based Temperature & Humidity Monitoring System using ESP32 and Blynk Cloud
 //Sensor Pin Config
 #define DHT_read 34
 //Header Configuration
-#include<BlynkSimpleEsp32.h>
-#include<WiFiClient.h>
-#include<DHT22.h>
+#include <ESP8266WiFi.h>
+#include <BlynkSimpleEsp8266.h>
+#include<DHT.h>
 //WiFi Credentials
 char auth[] = BLYNK_AUTH_TOKEN;
-char ssid[] = "Wokwi-GUEST";
-char pass[] = "";
+char ssid[] = "iPhone (2)";
+char pass[] = "12345sorry123";
 //Creating Timer Object
 BlynkTimer timer;
 //Binding DHT Pin with DHT_TYPE
-DHT dht(DHT_read, DHT22);
+DHT dht(DHT_read, DHT11);
 //Global variables to hold readings
 float temperature;
 float humidity;
