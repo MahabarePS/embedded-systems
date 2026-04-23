@@ -23,7 +23,7 @@ BLYNK_WRITE(V0){
   int state = param.asInt();
   if(state==1){
     count++;
-  }
+  }//
   digitalWrite(LED, state);
   BLYNK_PRINT.println(state ? "LED ON" : "LED OFF");
   }
