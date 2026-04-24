@@ -7,7 +7,7 @@ IoT-Based Temperature & Humidity Monitoring System using ESP32 and Blynk Cloud
 #define BLYNK_TEMPLATE_NAME "DHTupdate"
 #define BLYNK_AUTH_TOKEN "mUgmwuiu4g3_ubLM-lsbXhpP0QHjys01"
 //Sensor Pin Config
-#define DHT_read 16
+#define DHT_read 4
 //Header Configuration
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
