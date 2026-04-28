@@ -1,4 +1,7 @@
-#define LED 2
+/*
+Simple LED blink using ESP32-WROOM module
+*/
+#define LED 2  //Pin Connected to the IR sensor OUT
 void setup() {
   // put your setup code here, to run once:
   pinMode(LED,OUTPUT);
