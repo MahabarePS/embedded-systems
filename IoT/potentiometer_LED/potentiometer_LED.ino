@@ -5,19 +5,22 @@ Adjusting LED brightness using a POTmeter
 #define LED 2
 #define POT 4
 
-//PWM settings
-const int freq = 5000;
-const int resolution = 12;
-const int channel=0;
+uint8_t brightness = 0;
 
 void setup() {
-  // put your setup code here, to run once:
- Serial.begin(115200);
- // configure PWM
- ledcSetup(channel, freq, resolution);
- ledcAttachPin(LED, channel);
+  // declare the ledPin as an OUTPUT:
+  pinMode(LED, OUTPUT);
+  // declare the potPin as an INPUT:
+  pinMode(POT, INPUT);
+  //start the serial monitor:
+  Serial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+    // read the most recent byte (which will be from 0 to 255):
+    brightness = analogRead(POT);
+    Serial.println(brightness);
+    // set the brightness of the LED:
+    analogWrite(LED, brightness);
+    delay(1);
 }
