@@ -6,6 +6,7 @@ Adjusting LED brightness using a POTmeter
 #define POT 4
 
 uint8_t brightness = 0;
+uint16_t potValue = 0;
 
 void setup() {
   // declare the ledPin as an OUTPUT:
@@ -17,10 +18,12 @@ void setup() {
 }
 
 void loop() {
-    // read the most recent byte (which will be from 0 to 255):
-    brightness = analogRead(POT);
-    Serial.println(brightness);
+    // ADC read (0->4095)
+    potValue = analogRead(POT);
+    //Scale ADC range to PWM range
+    brightness = potValue/16;
     // set the brightness of the LED:
     analogWrite(LED, brightness);
+    Serial.println(brightness);
     delay(1);
 }
